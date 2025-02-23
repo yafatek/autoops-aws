@@ -3,15 +3,12 @@ from setuptools import setup, find_packages
 with open("README.md", "r", encoding="utf-8") as fh:
     long_description = fh.read()
 
-with open("requirements.txt", "r", encoding="utf-8") as fh:
-    requirements = [line.strip() for line in fh if line.strip() and not line.startswith("#")]
-
 setup(
     name="autoops-aws",
     version="0.1.0",
-    author="Community",
+    author="YafaTek Solutions",
     author_email="your-email@example.com",
-    description="AI-Powered AWS DevOps Agent",
+    description="AI-powered AWS Operations Assistant",
     long_description=long_description,
     long_description_content_type="text/markdown",
     url="https://github.com/yafatek/autoops-aws",
@@ -28,18 +25,17 @@ setup(
         "Programming Language :: Python :: 3.10",
     ],
     python_requires=">=3.8",
-    install_requires=requirements,
-    extras_require={
-        "dev": [
-            "pytest>=7.0.0",
-            "black>=22.0.0",
-            "flake8>=4.0.0",
-            "mypy>=1.0.0",
-            "isort>=5.0.0",
-        ],
-        "docs": [
-            "mkdocs>=1.4.0",
-            "mkdocs-material>=9.0.0",
+    install_requires=[
+        "boto3>=1.26.0",
+        "click>=8.0.0",
+        "rich>=13.0.0",
+        "python-dotenv>=0.19.0",
+        "google-generativeai>=0.3.0",
+        "terraform-local>=0.15.0",
+    ],
+    entry_points={
+        "console_scripts": [
+            "aws-ai=autoops_aws.cli.ai_cli:main",
         ],
     },
 ) 
